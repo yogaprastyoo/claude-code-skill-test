@@ -14,7 +14,7 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use((config) => {
   const token = Cookies.get('XSRF-TOKEN');
   if (token) {
-    config.headers['X-XSRF-TOKEN'] = token;
+    config.headers['X-XSRF-TOKEN'] = decodeURIComponent(token);
   }
   return config;
 });
